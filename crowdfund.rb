@@ -1,17 +1,46 @@
-project1 = "ABC"
-project2 = "LMN"
-project3 = "XYZ"
+class Project
+  def initialize(name, funding, end_funding)
+    @name = name
+    @funding = funding
+    @end_funding = end_funding
+  end
 
-funding1 = 10000
-funding2 = 15000
-funding3 = 1200000
+  def add_funds
+    @funding += 25
+    puts "Project #{@name} got more funds!"
+  end
+
+  def remove_funds
+    @funding -= 15
+    puts "Project #{@name} lost some funds!"
+  end
+
+  def to_s
+    "Project #{@name} has #{@funding} towards a goal of #{@end_funding}"
+  end
+
+end
+
+
+project1 = Project.new("ABC", 100, 10000)
+project2 = Project.new("LMN", 200, 15000)
+project3 = Project.new("XYZ", 300, 1200000)
 
 current_time = Time.new
 formatted_time = current_time.strftime("%A %m/%d/%Y at %I:%M%p")
 puts "Welcome to CrowdFunding".upcase.center(80, "*")
 puts "At this time #{formatted_time} the projects have:".center(80)
 puts "".center(80, "*")
-puts "Project #{project1} has $#{funding1} in funding."
-puts "Project #{project2} has $#{funding2} in funding."
-puts "Project #{project3} has $#{funding3} in funding."
 
+puts project1
+puts project2
+puts project3
+
+project1.add_funds
+puts project1
+project2.remove_funds
+puts project2
+project3.add_funds
+puts project3
+project3.remove_funds
+puts project3
