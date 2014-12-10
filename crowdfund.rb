@@ -1,4 +1,7 @@
 class Project
+  attr_reader :funding, :end_funding
+  attr_accessor :name
+
   def initialize(name, funding, end_funding)
     @name = name
     @funding = funding
@@ -16,9 +19,12 @@ class Project
   end
 
   def to_s
-    "Project #{@name} has #{@funding} towards a goal of #{@end_funding}"
+    "Project #{@name} has #{@funding} towards a goal of #{@end_funding} you need still: #{total_funding_needed}"
   end
 
+  def total_funding_needed
+    @end_funding - @funding
+  end
 end
 
 
