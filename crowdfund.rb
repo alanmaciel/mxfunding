@@ -31,22 +31,27 @@ end
 project1 = Project.new("ABC", 100, 10000)
 project2 = Project.new("LMN", 200, 15000)
 project3 = Project.new("XYZ", 300, 1200000)
+project4 = Project.new("APP", 1500, 99900)
 
+projects = [project1, project2, project3]
+
+projects.pop
+projects.push(project4)
 current_time = Time.new
 formatted_time = current_time.strftime("%A %m/%d/%Y at %I:%M%p")
 puts "Welcome to CrowdFunding".upcase.center(80, "*")
-puts "At this time #{formatted_time} the projects have:".center(80)
+puts "At this time #{formatted_time} the #{projects.size} projects have:".center(80)
 puts "".center(80, "*")
 
-puts project1
-puts project2
-puts project3
+projects.each do |project|
+  puts project
+end
 
-project1.add_funds
-puts project1
-project2.remove_funds
-puts project2
-project3.add_funds
-puts project3
-project3.remove_funds
-puts project3
+puts "".center(80, "*")
+
+projects.each do |project|
+  project.add_funds
+  project.add_funds
+  project.remove_funds
+  puts project
+end
